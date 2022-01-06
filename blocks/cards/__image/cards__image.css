@@ -1,0 +1,10 @@
+.cards__image {
+    display: block;
+    object-fit: cover;
+    object-position: top;
+    width: 282px;
+    height: 282px;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    grid-column: 1/3;
+}

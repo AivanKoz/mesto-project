@@ -1,0 +1,18 @@
+.profile__name {
+    margin: 0;
+    grid-area: name;
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 48px;
+    color: #fff;
+    min-width: 294px;
+}
+
+@media (max-width: 1060px) {
+    .profile__name {
+        min-width: 189px;
+        font-size: 27px;
+        line-height: 33px;
+        text-align: center;
+    }
+}

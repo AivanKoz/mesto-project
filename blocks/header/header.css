@@ -1,0 +1,11 @@
+.header {
+    min-height: 74px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(84, 84, 84, .7);
+}
+
+@media (max-width: 750px) {
+    .header {
+        min-height: 56px;   
+    }
+}
