@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,11 +8,12 @@
     <link rel="stylesheet" href="./pages/index.css">
     <title>Место</title>
 </head>
+
 <body class="page">
-    <header class="header page__container">
+    <header class="header">
         <img class="header__logo" src="./vendor/images/mesto_logo.svg" alt="логотип Место">
     </header>
-    <main class="content page__container">
+    <main class="content">
         <section class="profile content__profile">
             <img class="profile__image" src="./vendor/images/kusto.jpg" alt="Жак Ив Кусто">
             <div class="profile__info">
@@ -20,9 +22,8 @@
                 <button class="profile__edit-button"></button>
             </div>
             <button class="profile__add-button"></button>
-            
         </section>
-        <section class="cards content__cards">
+        <section class="cards">
             <ul class="cards__list">
                 <li class="cards__item">
                     <img src="./vendor/images/murmansk.jpg" alt="" class="cards__image">
@@ -57,7 +58,7 @@
             </ul>
         </section>
     </main>
-    <footer class="footer page__container">
+    <footer class="footer">
         <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
     <section class="popup page__popup popup_opened">
@@ -70,4 +71,5 @@
         </form>
     </section>
 </body>
+
 </html>
