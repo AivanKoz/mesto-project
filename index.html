@@ -10,65 +10,67 @@
 </head>
 
 <body class="page">
-    <header class="header">
+    <header class="header page__container">
         <img class="header__logo" src="./vendor/images/mesto_logo.svg" alt="логотип Место">
     </header>
-    <main class="content">
-        <section class="profile content__profile">
+    <main>
+        <section class="profile page__container">
             <img class="profile__image" src="./vendor/images/kusto.jpg" alt="Жак Ив Кусто">
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <p class="profile__activity">Исследователь океана</p>
-                <button class="profile__edit-button"></button>
+                <button type="button" class="profile__edit-button"></button>
             </div>
-            <button class="profile__add-button"></button>
+            <button type="submit" class="profile__add-button"></button>
         </section>
-        <section class="cards">
+        <section class="cards page__container">
             <ul class="cards__list">
                 <li class="cards__item">
                     <img src="./vendor/images/murmansk.jpg" alt="" class="cards__image">
                     <h2 class="cards__heading">Мурманск</h2>
-                    <button class="cards__like-icon cards__like-icon_status_disabled"></button>
+                    <button type="submit" class="cards__like-icon"></button>
                 </li>
                 <li class="cards__item">
                     <img src="./vendor/images/kirovsk.jpg" alt="" class="cards__image">
                     <h2 class="cards__heading">Кировск</h2>
-                    <button class="cards__like-icon cards__like-icon_status_active"></button>
+                    <button type="submit" class="cards__like-icon cards__like-icon_active"></button>
                 </li>
                 <li class="cards__item">
                     <img src="./vendor/images/kumertau.jpg" alt="" class="cards__image">
                     <h2 class="cards__heading">Кумертау</h2>
-                    <button class="cards__like-icon cards__like-icon_status_disabled"></button>
+                    <button type="submit" class="cards__like-icon"></button>
                 </li>
                 <li class="cards__item">
                     <img src="./vendor/images/omsk.jpg" alt="" class="cards__image">
                     <h2 class="cards__heading">Омск</h2>
-                    <button class="cards__like-icon cards__like-icon_status_active"></button>
+                    <button type="submit" class="cards__like-icon cards__like-icon_active"></button>
                 </li>
                 <li class="cards__item">
                     <img src="./vendor/images/samara.jpg" alt="" class="cards__image">
                     <h2 class="cards__heading">Самара</h2>
-                    <button class="cards__like-icon cards__like-icon_status_disabled"></button>
+                    <button type="submit" class="cards__like-icon"></button>
                 </li>
                 <li class="cards__item">
                     <img src="./vendor/images/starokoz'modemianovskoe.jpg" alt="" class="cards__image">
                     <h2 class="cards__heading">Старокозьмодемьяновское</h2>
-                    <button class="cards__like-icon cards__like-icon_status_active"></button>
+                    <button type="submit" class="cards__like-icon cards__like-icon_active"></button>
                 </li>
             </ul>
         </section>
     </main>
-    <footer class="footer">
+    <footer class="footer page__container">
         <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
-    <section class="popup page__popup popup_opened">
-        <form class="popup__container">
+    <section class="popup popup_opened">
+        <div class="popup__container">
             <h2 class="popup__heading">Редактировать профиль</h2>
-            <input type="text" value="Жак-Ив Кусто" class="popup__item">
-            <input type="text" value="Исследователь океана" class="popup__item">
-            <button class="popup__save-button">Сохранить</button>
-            <button class="popup__closing-button"></button>
-        </form>
+            <form class="popup__form" name="edit_form">
+                <input type="text" name="name" value="Жак-Ив Кусто" class="popup__item">
+                <input type="text" name="activity" value="Исследователь океана" class="popup__item">
+                <button type="submit" class="popup__save-button">Сохранить</button>
+            </form>
+            <button type="button" class="popup__closing-button"></button>
+        </div>
     </section>
 </body>
 
