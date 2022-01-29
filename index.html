@@ -24,43 +24,7 @@
             <button type="button" class="profile__add-button"></button>
         </section>
         <section class="cards page__container">
-            <ul class="cards__list">
-                <li class="cards__item">
-                    <img src="./vendor/images/murmansk.jpg" alt="Мурманск" class="cards__image">
-                    <h2 class="cards__heading">Мурманск</h2>
-                    <button type="submit" class="cards__like-icon"></button>
-                    <button type="button" class="cards__delete-card"></button>
-                </li>
-                <li class="cards__item">
-                    <img src="./vendor/images/kirovsk.jpg" alt="Кировск" class="cards__image">
-                    <h2 class="cards__heading">Кировск</h2>
-                    <button type="submit" class="cards__like-icon cards__like-icon_active"></button>
-                    <button type="button" class="cards__delete-card"></button>
-                </li>
-                <li class="cards__item">
-                    <img src="./vendor/images/kumertau.jpg" alt="Кумертау" class="cards__image">
-                    <h2 class="cards__heading">Кумертау</h2>
-                    <button type="submit" class="cards__like-icon"></button>
-                    <button type="button" class="cards__delete-card"></button>
-                </li>
-                <li class="cards__item">
-                    <img src="./vendor/images/omsk.jpg" alt="Омск" class="cards__image">
-                    <h2 class="cards__heading">Омск</h2>
-                    <button type="submit" class="cards__like-icon cards__like-icon_active"></button>
-                    <button type="button" class="cards__delete-card"></button>
-                </li>
-                <li class="cards__item">
-                    <img src="./vendor/images/samara.jpg" alt="Самара" class="cards__image">
-                    <h2 class="cards__heading">Самара</h2>
-                    <button type="submit" class="cards__like-icon"></button>
-                    <button type="button" class="cards__delete-card"></button>
-                </li>
-                <li class="cards__item">
-                    <img src="./vendor/images/starokozmodemianovskoe.jpg" alt="Старокозьмодемьяновское" class="cards__image">
-                    <h2 class="cards__heading">Старокозьмодемьяновское</h2>
-                    <button type="submit" class="cards__like-icon cards__like-icon_active"></button>
-                    <button type="button" class="cards__delete-card"></button>
-                </li>
+            <ul class="cards__list">  
             </ul>
         </section>
     </main>
@@ -82,14 +46,29 @@
         <div class="popup__container">
             <h2 class="popup__heading">Новое место</h2>
             <form class="popup__form" name="edit_form">
-                <input type="text" name="name" placeholder="Название" class="popup__item">
-                <input type="text" name="image-url" placeholder="Ссылка на картинку" class="popup__item">
+                <input type="text" id="place-name-input" name="name" placeholder="Название" class="popup__item">
+                <input type="text" id="img-url-input" name="image-url" placeholder="Ссылка на картинку" class="popup__item">
                 <button type="submit" class="popup__save-button">Создать</button>
             </form>
             <button type="button" class="popup__closing-button"></button>
         </div>
     </section>
-    <script src="script.js"></script>
+    <section class="popup popup_opened" id="card-image">
+        <div class="popup__container">
+            <img class="popup__card-image" src="./vendor/images/murmansk.jpg" alt="Мурманск">
+            <h2 class="popup__image-caption">Мурманск</h2>
+            <button type="button" class="popup__closing-button"></button>
+        </div>
+    </section>
+    <template id="cards-template">
+        <li class="cards__item">
+            <img src="${linkCard}" alt="${nameCard}" class="cards__image">
+            <h2 class="cards__heading">${nameCard}</h2>
+            <button type="submit" class="cards__like-icon"></button>
+            <button type="button" class="cards__delete-icon"></button>
+        </li>
+    </template>
+    <script src="script.js" defer></script>
 </body>
 
 </html>

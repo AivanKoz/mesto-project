@@ -15,7 +15,7 @@ const profileInfo = document.querySelector('.profile__info');
 const profileName = profileInfo.querySelector('.profile__name');
 const profileActivity = profileInfo.querySelector('.profile__activity');
 
-const initialCards = [
+const placeCards = [
   {
     name: 'Мурманск',
     link: './vendor/images/murmansk.jpg'
@@ -42,6 +42,55 @@ const initialCards = [
   }
   ];
 
+  const nameCard = placeCards.name;
+  const linkCard = placeCards.link;
+
+//Карточки при загрузке
+
+const cardsContainer = document.querySelector('.cards__list');
+const cardsTemplate = document.querySelector('#cards-template').content.querySelector('.cards__item');
+
+function renderCard (nameCard, linkCard) {
+
+  const cardElement = cardsTemplate.cloneNode(true);
+  
+  const cardNameElement = cardElement.querySelector('.cards__heading');
+  const cardImgElement = cardElement.querySelector('.cards__image');
+  cardNameElement.textContent = nameCard;
+  cardImgElement.alt = nameCard;
+  cardImgElement.src = linkCard;
+
+  const cardButtonDelete = cardElement.querySelector('.cards__delete-icon');
+  cardButtonDelete.addEventListener('click', (event) => {
+    event.target.closest ('.cards__item').remove();
+  })
+
+  const cardLikeIcon = cardElement.querySelector('.cards__like-icon');
+  cardLikeIcon.addEventListener('click', (event) => {
+    event.target.classList.toggle ('cards__like-icon_active');
+  })
+
+  cardsContainer.append(cardElement);
+}
+
+placeCards.forEach(function (item) {
+  renderCard(item.name, item.link);
+ });
+
+ popupAddCard.addEventListener ('submit', (event) => {
+  event.preventDefault();
+
+  const placeNameInput = event.target.querySelector('#place-name-input');
+  const placeName = placeNameInput.value;
+  const placeImageUrlInput = event.target.querySelector('#img-url-input');
+  const placeImage = placeImageUrlInput.value;
+
+  renderCard(placeName, placeImage);
+
+  closePopup(popupAddCard);
+})
+
+
 function openPopup(popup) {
   popup.classList.add("popup_opened");  
 }
@@ -62,7 +111,7 @@ closePopupButton[0].addEventListener('click', (evt) => {
 closePopupButton[1].addEventListener('click', () => {
   closePopup(popupAddCard)
 });
- 
+
 function formSubmitHandler(evt) {
     evt.preventDefault();
 
@@ -72,7 +121,9 @@ function formSubmitHandler(evt) {
     popupEditProfile.classList.remove("popup_opened");  
 }
   
-popupForm.addEventListener('submit', formSubmitHandler);
+
+
+
 
 
 
