@@ -1,130 +1,117 @@
-const popup = document.querySelector('.popup');
-const popupEditProfile = document.querySelector('#edit-profile');
-const popupAddCard = document.querySelector('#add-card');
+function formSubmitHandler(evt) {
+  evt.preventDefault();
 
-const addCardButton = document.querySelector('.profile__add-button');
-const editButton = document.querySelector('.profile__edit-button');
-const closePopupButton = document.querySelectorAll('.popup__closing-button');
-const saveButton = document.querySelector('.popup__save-button');
+  const profileName = document.querySelector(".profile__name");
+  const profileActivity = document.querySelector(".profile__activity");
 
-const popupForm = popupEditProfile.querySelector('.popup__form[name="edit_form"]')
-const activityInput = popupEditProfile.querySelector('input[name="activity"]');
-const nameInput = popupEditProfile.querySelector('input[name="name"]');
+  profileName.textContent = nameInput.value;
+  profileActivity.textContent = activityInput.value;
 
-const profileInfo = document.querySelector('.profile__info');
-const profileName = profileInfo.querySelector('.profile__name');
-const profileActivity = profileInfo.querySelector('.profile__activity');
+  popupEditProfile.classList.remove("popup_opened");
+}
+
+popupForm.addEventListener("submit", formSubmitHandler);
 
 const placeCards = [
   {
-    name: 'Мурманск',
-    link: './vendor/images/murmansk.jpg'
+    name: "Мурманск",
+    link: "./vendor/images/murmansk.jpg",
   },
   {
-    name: 'Кировск',
-    link: './vendor/images/kirovsk.jpg'
+    name: "Кировск",
+    link: "./vendor/images/kirovsk.jpg",
   },
   {
-    name: 'Кумертау',
-    link: './vendor/images/kumertau.jpg'
+    name: "Кумертау",
+    link: "./vendor/images/kumertau.jpg",
   },
   {
-    name: 'Омск',
-    link: './vendor/images/omsk.jpg'
+    name: "Омск",
+    link: "./vendor/images/omsk.jpg",
   },
   {
-    name: 'Самара',
-    link: './vendor/images/samara.jpg'
+    name: "Самара",
+    link: "./vendor/images/samara.jpg",
   },
   {
-    name: 'Старокозьмодемьяновское',
-    link: './vendor/images/starokozmodemianovskoe.jpg'
-  }
-  ];
+    name: "Старокозьмодемьяновское",
+    link: "./vendor/images/starokozmodemianovskoe.jpg",
+  },
+];
 
-  const nameCard = placeCards.name;
-  const linkCard = placeCards.link;
+const cardsContainer = document.querySelector(".cards__list");
+const cardsTemplate = document
+  .querySelector("#cards-template")
+  .content.querySelector(".cards__item");
 
-//Карточки при загрузке
-
-const cardsContainer = document.querySelector('.cards__list');
-const cardsTemplate = document.querySelector('#cards-template').content.querySelector('.cards__item');
-
-function renderCard (nameCard, linkCard) {
-
+function renderCard(nameCard, linkCard) {
   const cardElement = cardsTemplate.cloneNode(true);
-  
-  const cardNameElement = cardElement.querySelector('.cards__heading');
-  const cardImgElement = cardElement.querySelector('.cards__image');
+
+  const cardNameElement = cardElement.querySelector(".cards__heading");
+  const cardImgElement = cardElement.querySelector(".cards__image");
+  const cardPopupNameElement = document.querySelector(".popup__image-caption");
+  const cardPopupImgElement = document.querySelector(".popup__card-image");
+
   cardNameElement.textContent = nameCard;
   cardImgElement.alt = nameCard;
   cardImgElement.src = linkCard;
 
-  const cardButtonDelete = cardElement.querySelector('.cards__delete-icon');
-  cardButtonDelete.addEventListener('click', (event) => {
-    event.target.closest ('.cards__item').remove();
-  })
+  const cardButtonDelete = cardElement.querySelector(".cards__delete-icon");
+  cardButtonDelete.addEventListener("click", (event) => {
+    event.target.closest(".cards__item").remove();
+  });
 
-  const cardLikeIcon = cardElement.querySelector('.cards__like-icon');
-  cardLikeIcon.addEventListener('click', (event) => {
-    event.target.classList.toggle ('cards__like-icon_active');
-  })
+  const cardLikeIcon = cardElement.querySelector(".cards__like-icon");
+  cardLikeIcon.addEventListener("click", (event) => {
+    event.target.classList.toggle("cards__like-icon_active");
+  });
+
+  cardImgElement.addEventListener("click", () => {
+    cardPopupNameElement.textContent = cardNameElement.textContent;
+    cardPopupImgElement.alt = cardImgElement.alt;
+    cardPopupImgElement.src = cardImgElement.src;
+    openPopup(popupCardImage);
+  });
 
   cardsContainer.append(cardElement);
 }
 
 placeCards.forEach(function (item) {
   renderCard(item.name, item.link);
- });
+});
 
- popupAddCard.addEventListener ('submit', (event) => {
+popupAddCard.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const placeNameInput = event.target.querySelector('#place-name-input');
+  const placeNameInput = event.target.querySelector("#place-name-input");
   const placeName = placeNameInput.value;
-  const placeImageUrlInput = event.target.querySelector('#img-url-input');
+  const placeImageUrlInput = event.target.querySelector("#img-url-input");
   const placeImage = placeImageUrlInput.value;
 
   renderCard(placeName, placeImage);
-
   closePopup(popupAddCard);
-})
-
+});
 
 function openPopup(popup) {
-  popup.classList.add("popup_opened");  
+  popup.classList.add("popup_opened");
 }
 function closePopup(popup) {
-  popup.classList.remove("popup_opened")  
+  popup.classList.remove("popup_opened");
 }
 
-editButton.addEventListener('click', () => {
-  openPopup(popupEditProfile)
+editButton.addEventListener("click", () => {
+  openPopup(popupEditProfile);
 });
-addCardButton.addEventListener('click', () => {
-  openPopup(popupAddCard)
-});
-
-closePopupButton[0].addEventListener('click', (evt) => {
-  closePopup(popupEditProfile)
-});
-closePopupButton[1].addEventListener('click', () => {
-  closePopup(popupAddCard)
+addCardButton.addEventListener("click", () => {
+  openPopup(popupAddCard);
 });
 
-function formSubmitHandler(evt) {
-    evt.preventDefault();
-
-    profileName.textContent = nameInput.value;
-    profileActivity.textContent = activityInput.value;
-
-    popupEditProfile.classList.remove("popup_opened");  
-}
-  
-
-
-
-
-
-
-
+closePopupButton[0].addEventListener("click", () => {
+  closePopup(popupEditProfile);
+});
+closePopupButton[1].addEventListener("click", () => {
+  closePopup(popupAddCard);
+});
+closePopupButton[2].addEventListener("click", () => {
+  closePopup(popupCardImage);
+});
