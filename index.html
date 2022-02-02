@@ -39,7 +39,7 @@
                 <input type="text" name="activity" value="Исследователь океана" class="popup__item">
                 <button type="submit" class="popup__save-button">Сохранить</button>
             </form>
-            <button type="button" class="popup__closing-button"></button>
+            <button type="button" id="editprofclos-btn" class="popup__closing-button"></button>
         </div>
     </section>
     <section class="popup" id="add-card">
@@ -50,14 +50,14 @@
                 <input type="text" id="img-url-input" name="image-url" placeholder="Ссылка на картинку" class="popup__item">
                 <button type="submit" class="popup__save-button">Создать</button>
             </form>
-            <button type="button" class="popup__closing-button"></button>
+            <button type="button" id="addcardclos-btn" class="popup__closing-button"></button>
         </div>
     </section>
     <section class="popup popup__overlay" id="card-image">
         <div class="popup__image-container">
             <img class="popup__card-image" src="#" alt="">
             <h2 class="popup__image-caption"></h2>
-            <button type="button" class="popup__closing-button"></button>
+            <button type="button" id="imageclos-btn" class="popup__closing-button"></button>
         </div>
     </section>
     <template id="cards-template">
