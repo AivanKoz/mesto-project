@@ -14,6 +14,3 @@ const activityInput = popupEditProfile.querySelector('input[name="activity"]');
 const nameInput = popupEditProfile.querySelector('input[name="name"]');
 
 const profileInfo = document.querySelector('.profile__info');
-
-const nameCard = placeCards.name;
-const linkCard = placeCards.link;
